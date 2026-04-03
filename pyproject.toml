@@ -1,16 +1,13 @@
 [project]
 name = "email-triage-ai"
 version = "0.1.0"
-description = "Email classification agent using OpenEnv"
-authors = [
-  {name = "Ruchira"}
-]
+
 dependencies = [
-  "fastapi",
-  "uvicorn",
-  "pydantic"
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "openenv>=0.2.0"
 ]
 
-[build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+[project.scripts]
+server = "server.app:app"
