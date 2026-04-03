@@ -28,3 +28,6 @@ def step(input: StepInput):
         "reward": reward,
         "done": done
     }
+
+def main():
+    return app
