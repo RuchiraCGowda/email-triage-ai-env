@@ -1,0 +1,9 @@
+name: email-triage-env
+
+environment:
+  observation_space: text
+  action_space: text
+
+entry_point:
+  reset: /reset
+  step: /step
