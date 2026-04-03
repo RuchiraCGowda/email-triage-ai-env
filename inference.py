@@ -1,27 +1,36 @@
 import os
-
-API_BASE_URL = os.getenv("API_BASE_URL", "default")
-MODEL_NAME = os.getenv("MODEL_NAME", "default")
-HF_TOKEN = os.getenv("HF_TOKEN", "")
+from fastapi import FastAPI
+from pydantic import BaseModel
 
 from env import EmailEnv
 from agent import Agent
 
-def run():
-    print("START")
+app = FastAPI()
 
-    env = EmailEnv(mode="all")
-    agent = Agent()
+env = EmailEnv(mode="all")
+agent = Agent()
 
+
+class StepInput(BaseModel):
+    email: str
+
+
+@app.post("/reset")
+def reset():
     state = env.reset()
-    done = False
+    return {"state": state}
 
-    while not done:
-        print("STEP")
-        action = agent.act(state["email"])
-        state, reward, done = env.step(action)
 
-    print("END")
+@app.post("/step")
+def step(input: StepInput):
+    email = input.email
 
-if __name__ == "__main__":
-    run()
+    action = agent.act(email)
+    state, reward, done = env.step(action)
+
+    return {
+        "action": action,
+        "state": state,
+        "reward": reward,
+        "done": done
+    }
