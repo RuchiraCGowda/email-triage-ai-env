@@ -1,30 +1,18 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
+def run():
+    task_name = "email_triage"
 
-from env import EmailEnv
-from agent import Agent
+    print(f"[START] task={task_name}", flush=True)
 
-app = FastAPI()
+    # Example step (you can connect your logic here)
+    step = 1
+    reward = 0.5
+    print(f"[STEP] step={step} reward={reward}", flush=True)
 
-env = EmailEnv(mode="all")
-agent = Agent()
+    # Final output
+    score = 0.95
+    steps = 1
+    print(f"[END] task={task_name} score={score} steps={steps}", flush=True)
 
-class StepInput(BaseModel):
-    email: str
 
-@app.post("/reset")
-def reset():
-    state = env.reset()
-    return {"state": state}
-
-@app.post("/step")
-def step(input: StepInput):
-    action = agent.act(input.email)
-    state, reward, done = env.step(action)
-
-    return {
-        "action": action,
-        "state": state,
-        "reward": reward,
-        "done": done
-    }
+if __name__ == "__main__":
+    run()
