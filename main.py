@@ -1,7 +1,7 @@
 from env import EmailEnv
 from agent import Agent
 
-# Change mode here: easy / medium / hard / all
+# Change mode here: easy / medium / hard / all of all
 env = EmailEnv(mode="all")
 agent = Agent()
 
