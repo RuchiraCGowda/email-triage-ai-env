@@ -1,4 +1,4 @@
-def run():      
+def run():              
     task_name = "email_triage"
 
     print(f"[START] task={task_name}", flush=True)
