@@ -1,4 +1,4 @@
-from env import EmailEnv
+from env import EmailEnv  
 from agent import Agent
 
 # Change mode here: easy / medium / hard / all of all
