@@ -9,5 +9,4 @@ class Agent:
         elif "meeting" in email or "project" in email or "team" in email:
             return "work"
         else:
-            
             return "personal"
