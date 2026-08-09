@@ -8,7 +8,7 @@ def run():
     reward = 0.5
     print(f"[STEP] step={step} reward={reward}", flush=True)  
 
-    # Final output   
+    # Final output 
     score = 0.95
     steps = 1
     print(f"[END] task={task_name} score={score} steps={steps}", flush=True)
