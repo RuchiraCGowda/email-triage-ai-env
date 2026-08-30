@@ -8,5 +8,5 @@ class Agent:
             return "urgent"
         elif "meeting" in email or "project" in email or "team" in email:
             return "work"
-        else:
+        else:    
             return "personal"
